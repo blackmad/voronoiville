@@ -28,7 +28,7 @@ class BoundingBox:
     y1: float
     x2: float
     y2: float
-    def __init__(self, x1: float, y1: float, x2: float, y2: float) -> "BoundingBox":
+    def __init__(self, x1: float, y1: float, x2: float, y2: float) -> None:
         """Creates a bounding box with bottom-left corner (x1, y1)
         and upper-right corner (x2, y2)
 

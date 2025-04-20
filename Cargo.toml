@@ -1,6 +1,6 @@
 [package]
 name = "voronoiville"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "MIT"
 homepage = "https://github.com/pmbaumgartner/voronoiville"
@@ -23,5 +23,8 @@ name = "voronoiville"
 crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = { version = "0.17.3", features = ["extension-module", "abi3-py37"] }
+pyo3 = { version = "0.24.1", features = ["extension-module", "abi3-py37"] }
 voronoice = "0.2.0"
+
+[build-dependencies]
+pyo3-build-config = "0.24.1"

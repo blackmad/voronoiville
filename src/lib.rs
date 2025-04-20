@@ -123,8 +123,8 @@ impl VoronoiCellPy {
     }
 }
 
-#[allow(clippy::or_fun_call)]
-#[pyfunction(return_neighbors = true, lloyd_relaxation_iterations = 0)]
+#[pyfunction]
+#[pyo3(name = "voronoi")]
 fn voronoi(
     points: Vec<(f64, f64)>,
     bounding_box: BoundingBoxPy,
@@ -138,7 +138,6 @@ fn voronoi(
         .set_bounding_box(bounding_box)
         .set_lloyd_relaxation_iterations(lloyd_relaxation_iterations)
         .build()
-        // clippy generates the or_fun_call warning here
         .ok_or(PyRuntimeError::new_err(
             "Can't build Voronoi diagram from given points.",
         ))?;
@@ -153,7 +152,7 @@ fn voronoi(
 }
 
 #[pymodule]
-fn voronoiville(_py: Python, m: &PyModule) -> PyResult<()> {
+fn voronoiville(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(voronoi, m)?)?;
     m.add_class::<BoundingBoxPy>()?;
     m.add_class::<VoronoiCellPy>()?;
