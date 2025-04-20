@@ -156,6 +156,7 @@ fn voronoi(
 fn voronoiville(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(voronoi, m)?)?;
     m.add_class::<BoundingBoxPy>()?;
+    m.add_class::<VoronoiCellPy>()?;
     Ok(())
 }
 
